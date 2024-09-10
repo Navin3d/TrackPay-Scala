@@ -1,4 +1,4 @@
-package gmc.learning.scala.entities
+package gmc.learning.scala.models
 
 case class CustomerEntity(
   var id: Long,

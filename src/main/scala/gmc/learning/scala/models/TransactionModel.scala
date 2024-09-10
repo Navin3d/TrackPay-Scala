@@ -1,4 +1,4 @@
-package gmc.learning.scala.entities
+package gmc.learning.scala.models
 
 case class CurrencyValue(currency_code: String, value: String)
 case class TransactionInfo(
