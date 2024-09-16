@@ -15,6 +15,8 @@ class PayPalConfigs:
   var baseUrl: String = uninitialized
   @Value("${paypal.auth-url}")
   var authUrl: String = uninitialized
+  @Value("${paypal.auth-token}")
+  var authToken: String = uninitialized
   @Value("${paypal.user-url}")
   var userUrl: String = uninitialized
   @Value("${paypal.transactions-url}")

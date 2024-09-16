@@ -1,38 +1,55 @@
 package gmc.learning.scala.models
 
-case class CurrencyValue(currency_code: String, value: String)
+import com.fasterxml.jackson.annotation.JsonProperty
+
+case class CurrencyValue(
+                          @JsonProperty("currency_code") currencyCode: String,
+                          @JsonProperty("value") value: String
+                        )
+
 case class TransactionInfo(
-                            transaction_id: String,
-                            transaction_event_code: String,
-                            transaction_initiation_date: String,
-                            transaction_updated_date: String,
-                            transaction_amount: CurrencyValue,
-                            transaction_status: String,
-                            transaction_subject: Option[String],
-                            fee_amount: Option[CurrencyValue],
-                            ending_balance: CurrencyValue,
-                            available_balance: CurrencyValue,
-                            custom_field: Option[String],
-                            protection_eligibility: String,
-                            transaction_note: Option[String]
+                            @JsonProperty("transaction_id") transactionId: String,
+                            @JsonProperty("transaction_event_code") transactionEventCode: String,
+                            @JsonProperty("transaction_initiation_date") transactionInitiationDate: String,
+                            @JsonProperty("transaction_updated_date") transactionUpdatedDate: String,
+                            @JsonProperty("transaction_amount") transactionAmount: CurrencyValue,
+                            @JsonProperty("transaction_status") transactionStatus: String,
+                            @JsonProperty("transaction_subject") transactionSubject: String,
+                            @JsonProperty("fee_amount") feeAmount: CurrencyValue,
+                            @JsonProperty("ending_balance") endingBalance: CurrencyValue,
+                            @JsonProperty("available_balance") availableBalance: CurrencyValue,
+                            @JsonProperty("custom_field") customField: String,
+                            @JsonProperty("protection_eligibility") protectionEligibility: String,
+                            @JsonProperty("transaction_note") transactionNote: String
                           )
+
 case class PayerInfo(
-                      email_address: Option[String],
-                      address_status: String,
-                      payer_name: Option[Map[String, String]]
+                      @JsonProperty("email_address") emailAddress: String,
+                      @JsonProperty("address_status") addressStatus: String,
+                      @JsonProperty("payer_name") payerName: PayerName
                     )
-case class ShippingInfo(name: Option[String])
-case class CartInfo() // Assuming no fields here
-case class StoreInfo() // Assuming no fields here
-case class AuctionInfo() // Assuming no fields here
-case class IncentiveInfo() // Assuming no fields here
+
+case class PayerName(
+                      @JsonProperty("given_name") givenName: String,
+                      @JsonProperty("surname") surname: String
+                    )
+
+case class ShippingInfo(@JsonProperty("name") name: String)
+case class CartInfo()
+case class StoreInfo()
+case class AuctionInfo()
+case class IncentiveInfo()
+
 case class TransactionDetail(
-                              transaction_info: TransactionInfo,
-                              payer_info: PayerInfo,
-                              shipping_info: ShippingInfo,
-                              cart_info: CartInfo,
-                              store_info: StoreInfo,
-                              auction_info: AuctionInfo,
-                              incentive_info: IncentiveInfo
+                              @JsonProperty("transaction_info") transactionInfo: TransactionInfo,
+                              @JsonProperty("payer_info") payerInfo: PayerInfo,
+                              @JsonProperty("shipping_info") shippingInfo: ShippingInfo,
+                              @JsonProperty("cart_info") cartInfo: CartInfo,
+                              @JsonProperty("store_info") storeInfo: StoreInfo,
+                              @JsonProperty("auction_info") auctionInfo: AuctionInfo,
+                              @JsonProperty("incentive_info") incentiveInfo: IncentiveInfo
                             )
-case class TransactionDetails(transaction_details: List[TransactionDetail])
+
+case class TransactionDetails(
+                               @JsonProperty("transaction_details") var transactionDetails: Array[TransactionDetail]
+                             )

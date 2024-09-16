@@ -1,10 +1,10 @@
 package gmc.learning.scala
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 
-@ConfigurationPropertiesScan
+@OpenAPIDefinition
 @SpringBootApplication
 class ScalaApplication
 
