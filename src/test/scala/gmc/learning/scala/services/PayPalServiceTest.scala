@@ -2,7 +2,6 @@ package gmc.learning.scala.services
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 
 import scala.compiletime.uninitialized
 
@@ -13,5 +12,5 @@ class PayPalServiceTest:
 
   @Test
   def shouldReturnNonEmptyListOfTransactions: () => Unit = () => {
-    assert(payPalService.myTransactions().length != 0)
+    assert(payPalService.myTransactions().block().transactionDetails.length != 0)
   }

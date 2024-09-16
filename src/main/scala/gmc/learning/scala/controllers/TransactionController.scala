@@ -4,7 +4,7 @@ import gmc.learning.scala.models.TransactionDetails
 import gmc.learning.scala.services.PayPalService
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.web.bind.annotation.{GetMapping, RequestMapping, RestController}
-import reactor.core.publisher.{Flux, Mono}
+import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping(path = Array("/trx"))
